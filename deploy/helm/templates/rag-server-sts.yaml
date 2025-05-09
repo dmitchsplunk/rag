@@ -47,7 +47,8 @@ spec:
         - "0.0.0.0"
         - --workers
         - {{ .Values.ragServer.concurrentWorkers | quote }}
-        - --worker-class uvicorn.workers.UvicornWorker
+        - --worker-class
+        - uvicorn.workers.UvicornWorker
         env:
           - name: EXAMPLE_PATH
             value: {{ .Values.ragServer.env.EXAMPLE_PATH | quote }}
