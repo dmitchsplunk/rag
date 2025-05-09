@@ -1,3 +1,4 @@
+pydantic==2.10.6
 PyYAML==6.0.1
 dataclass-wizard==0.22.3
 gradio==5.11.0

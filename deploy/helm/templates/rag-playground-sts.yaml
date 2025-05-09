@@ -50,6 +50,14 @@ spec:
             value: {{ .Values.ragPlayground.env.APP_SERVERPORT | quote }}
           - name: APP_MODELNAME
             value: {{ .Values.ragPlayground.env.APP_MODELNAME | quote }}
+          - name: OTEL_SERVICE_NAME
+            value: {{ .Values.ragServer.env.OTEL_SERVICE_NAME | quote }}
+          - name: OTEL_RESOURCE_ATTRIBUTES
+            value: {{ .Values.ragServer.env.OTEL_RESOURCE_ATTRIBUTES | quote }}
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            value: {{ .Values.ragServer.env.OTEL_EXPORTER_OTLP_ENDPOINT | quote }}
+          - name: OTEL_EXPORTER_OTLP_PROTOCOL
+            value: {{ .Values.ragServer.env.OTEL_EXPORTER_OTLP_PROTOCOL | quote }}
         ports:
         - name: http
           containerPort: {{ .Values.ragPlayground.service.targetPort }}

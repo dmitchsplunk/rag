@@ -95,6 +95,16 @@ spec:
             value: {{ .Values.ragServer.env.CONVERSATION_HISTORY | quote }}
           - name: LOGLEVEL
             value: {{ .Values.ragServer.env.LOGLEVEL | quote }}
+          - name: OPENBLAS_NUM_THREADS
+            value: {{ .Values.ragServer.env.OPENBLAS_NUM_THREADS | quote }}
+          - name: OTEL_SERVICE_NAME
+            value: {{ .Values.ragServer.env.OTEL_SERVICE_NAME | quote }}
+          - name: OTEL_RESOURCE_ATTRIBUTES
+            value: {{ .Values.ragServer.env.OTEL_RESOURCE_ATTRIBUTES | quote }}
+          - name: OTEL_EXPORTER_OTLP_ENDPOINT
+            value: {{ .Values.ragServer.env.OTEL_EXPORTER_OTLP_ENDPOINT | quote }}
+          - name: OTEL_EXPORTER_OTLP_PROTOCOL
+            value: {{ .Values.ragServer.env.OTEL_EXPORTER_OTLP_PROTOCOL | quote }}
         ports:
         - name: http
           containerPort: {{ .Values.ragServer.service.targetPort }}
