@@ -27,7 +27,7 @@ spec:
         - -c
         - |
           apt update && apt install curl -y &&
-          until curl -sf http://nemo-ranking-ms:8000/v1/health/ready  && curl -sf http://nemo-embedding-ms:8000/v1/health/ready && curl -sf http://milvus:9091/healthz ; do
+          until curl -sf http://rerankqa.nim:8000/v1/health/ready  && curl -sf http://embedqa.nim:8000/v1/health/ready && curl -sf http://milvus-deployment.milvus:9091/healthz ; do
             echo "Waiting for all APIs to be healthy..."
             sleep 10
           done
