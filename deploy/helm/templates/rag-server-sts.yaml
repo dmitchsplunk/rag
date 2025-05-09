@@ -39,7 +39,7 @@ spec:
         image: {{ .Values.ragServer.image.repository }}:{{- .Values.ragServer.image.tag | default .Chart.AppVersion }}
         command:
         - splunk-py-trace
-        - uvicorn
+        - gunicorn
         - src.server:app
         - --port
         - {{ .Values.ragServer.service.targetPort | quote }}
@@ -47,6 +47,7 @@ spec:
         - "0.0.0.0"
         - --workers
         - {{ .Values.ragServer.concurrentWorkers | quote }}
+        - --worker-class uvicorn.workers.UvicornWorker
         env:
           - name: EXAMPLE_PATH
             value: {{ .Values.ragServer.env.EXAMPLE_PATH | quote }}
