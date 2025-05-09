@@ -46,8 +46,8 @@ COPY ./frontend /app/frontend
 
 WORKDIR /app
 
-RUN splunk-py-trace-bootstrap
+RUN opentelemetry-bootstrap -a install
 
-ENTRYPOINT ["splunk-py-trace", "python3.10", "-m", "frontend"]
+ENTRYPOINT ["opentelemetry-instrument", "python3.10", "-m", "frontend"]
 
 #ENTRYPOINT ["python3.10", "-m", "frontend"]
