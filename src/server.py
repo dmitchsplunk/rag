@@ -45,8 +45,13 @@ from pymilvus.exceptions import MilvusException
 from pymilvus.exceptions import MilvusUnavailableException
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 
+import openlit
+
 logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO').upper())
 logger = logging.getLogger(__name__)
+
+# Initialize OpenLIT instrumentation
+openlit.init()
 
 tags_metadata = [
     {

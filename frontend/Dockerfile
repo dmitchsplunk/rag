@@ -45,4 +45,9 @@ RUN apt-get clean
 COPY ./frontend /app/frontend
 
 WORKDIR /app
-ENTRYPOINT ["python3.10", "-m", "frontend"]
+
+RUN splunk-py-trace-bootstrap
+
+ENTRYPOINT ["splunk-py-trace", "python3.10", "-m", "frontend"]
+
+#ENTRYPOINT ["python3.10", "-m", "frontend"]

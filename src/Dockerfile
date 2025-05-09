@@ -51,5 +51,8 @@ COPY ./ /workspace
 
 WORKDIR /workspace/
 
-ENTRYPOINT ["uvicorn", "src.server:app"]
+RUN splunk-py-trace-bootstrap
+
+ENTRYPOINT ["splunk-py-trace", "uvicorn", "src.server:app"]
+#ENTRYPOINT ["uvicorn", "src.server:app"]
 # ENTRYPOINT ["/bin/bash"]
