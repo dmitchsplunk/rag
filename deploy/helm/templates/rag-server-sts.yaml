@@ -38,6 +38,7 @@ spec:
         imagePullPolicy: {{ .Values.ragServer.image.pullPolicy }}
         image: {{ .Values.ragServer.image.repository }}:{{- .Values.ragServer.image.tag | default .Chart.AppVersion }}
         command:
+        - splunk-py-trace
         - uvicorn
         - src.server:app
         - --port

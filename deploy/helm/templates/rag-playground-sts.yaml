@@ -38,6 +38,7 @@ spec:
         imagePullPolicy: {{ .Values.ragPlayground.image.pullPolicy }}
         image: {{ .Values.ragPlayground.image.repository }}:{{- .Values.ragPlayground.image.tag | default .Chart.AppVersion }}
         command:
+        - opentelemetry-instrument
         - python3.10
         - -m
         - frontend
