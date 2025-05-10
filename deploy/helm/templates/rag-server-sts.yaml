@@ -42,7 +42,7 @@ spec:
         - gunicorn
         - src.server:app
         - --bind
-        - "0.0.0.0":{{ .Values.ragServer.service.targetPort | quote }}
+        - 0.0.0.0:{{ .Values.ragServer.service.targetPort }}
         - --workers
         - {{ .Values.ragServer.concurrentWorkers | quote }}
         - --worker-class
