@@ -41,10 +41,8 @@ spec:
         - splunk-py-trace
         - gunicorn
         - src.server:app
-        - --port
-        - {{ .Values.ragServer.service.targetPort | quote }}
-        - --host
-        - "0.0.0.0"
+        - --bind
+        - "0.0.0.0":{{ .Values.ragServer.service.targetPort | quote }}
         - --workers
         - {{ .Values.ragServer.concurrentWorkers | quote }}
         - --worker-class
