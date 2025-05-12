@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: loadgen-cronjob
+  namespace: rag
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: loadgen
+              image: radial/busyboxplus:curl
+              imagePullPolicy: IfNotPresent
+              command: [ "/script/loadgen.sh" ]
+              volumeMounts:
+                - name: script
+                  mountPath: "/script"
+          volumes:
+            - name: script
+              configMap:
+                name: loadgen-configmap
+                defaultMode: 0500
+          restartPolicy: Never

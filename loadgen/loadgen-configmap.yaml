@@ -1,0 +1,29 @@
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: loadgen-configmap
+    namespace: rag
+  data:
+    loadgen.sh: |
+      #! /bin/bash 
+      
+      curl -X 'POST' \
+        'http://rag-server.rag.svc.cluster.local:8081/generate' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+        -d '{
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is a CVD? Explain in detail"
+        }
+      ],
+      "use_knowledge_base": true,
+      "temperature": 0.2,
+      "top_p": 0.7,
+      "max_tokens": 1024,
+      "top_k": 4,
+      "collection_name": "nvidia_blogs",
+      "model": "meta/llama-3.1-8b-instruct",
+      "stop": []
+      }'
