@@ -5,25 +5,43 @@
     namespace: rag
   data:
     loadgen.sh: |
-      #!/bin/sh 
-      
+      #!/bin/bash
+
+      for run in {1..50}; do
       curl -X 'POST' \
         'http://rag-server.rag.svc.cluster.local:8081/generate' \
-      -H 'accept: application/json' \
-      -H 'Content-Type: application/json' \
+        -H 'accept: application/json' \
+        -H 'Content-Type: application/json' \
         -d '{
-      "messages": [
-        {
-          "role": "user",
-          "content": "What is a CVD? Explain in detail"
-        }
-      ],
-      "use_knowledge_base": true,
-      "temperature": 0.2,
-      "top_p": 0.7,
-      "max_tokens": 1024,
-      "top_k": 4,
-      "collection_name": "nvidia_blogs",
-      "model": "meta/llama-3.1-8b-instruct",
-      "stop": []
+        "messages": [
+          {
+            "role": "user",
+            "content": "What is a CVD? Explain in detail"
+          }
+        ],
+        "use_knowledge_base": true,
+        "temperature": 0.2,
+        "top_p": 0.7,
+        "max_tokens": 1024,
+        "top_k": 4,
+        "collection_name": "nvidia_blogs",
+        "model": "meta/llama-3.1-8b-instruct",
+        "stop": []
       }'
+
+      curl -X 'POST' \
+        'http://embedqa.nim.svc.cluster.local/v1/embeddings' \
+        -H 'accept: application/json' \
+        -H 'Content-Type: application/json' \
+        -d '{
+        "input": "This is some text to be embedded.",
+        "model": "nvidia/llama-3.2-nv-embedqa-1b-v2",
+        "input_type": "query",
+        "encoding_format": "float",
+        "dimensions": null,
+        "user": "user-identifier",
+        "truncate": "NONE"
+      }'
+
+          sleep 5
+      done

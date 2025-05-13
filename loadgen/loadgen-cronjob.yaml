@@ -4,7 +4,7 @@ metadata:
   name: loadgen-cronjob
   namespace: rag
 spec:
-  schedule: "*/1 * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
       template:
