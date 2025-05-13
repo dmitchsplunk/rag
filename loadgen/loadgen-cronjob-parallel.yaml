@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: loadgen-cronjob-parallel
+  namespace: rag
+spec:
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: loadgen-parallel
+              image: radial/busyboxplus:curl
+              imagePullPolicy: IfNotPresent
+              command: [ "/script/loadgen.sh" ]
+              volumeMounts:
+                - name: script
+                  mountPath: "/script"
+          volumes:
+            - name: script
+              configMap:
+                name: loadgen-configmap
+                defaultMode: 0744
+          restartPolicy: Never
+      parallelism: 5
+    concurrencyPolicy: Allow
