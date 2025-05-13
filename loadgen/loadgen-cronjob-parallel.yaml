@@ -24,4 +24,4 @@ spec:
                 defaultMode: 0744
           restartPolicy: Never
       parallelism: 5
-    concurrencyPolicy: Allow
+  concurrencyPolicy: Allow
