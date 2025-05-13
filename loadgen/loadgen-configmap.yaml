@@ -5,9 +5,9 @@
     namespace: rag
   data:
     loadgen.sh: |
-      #!/bin/bash
+      #!/bin/sh 
 
-      for run in {1..50}; do
+      for i in $(seq 20); do
       curl -X 'POST' \
         'http://rag-server.rag.svc.cluster.local:8081/generate' \
         -H 'accept: application/json' \
@@ -30,7 +30,7 @@
       }'
 
       curl -X 'POST' \
-        'http://embedqa.nim.svc.cluster.local/v1/embeddings' \
+        'http://embedqa.nim.svc.cluster.local:8000/v1/embeddings' \
         -H 'accept: application/json' \
         -H 'Content-Type: application/json' \
         -d '{
