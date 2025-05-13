@@ -4,7 +4,7 @@ metadata:
   name: loadgen-cronjob-parallel
   namespace: rag
 spec:
-  schedule: "*/5 * * * *"
+  schedule: "*/15 * * * *"
   jobTemplate:
     spec:
       template:
@@ -23,5 +23,5 @@ spec:
                 name: loadgen-configmap
                 defaultMode: 0744
           restartPolicy: Never
-      parallelism: 5
+      parallelism: 3
   concurrencyPolicy: Allow
