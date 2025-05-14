@@ -27,7 +27,7 @@
         "collection_name": "nvidia_blogs",
         "model": "meta/llama-3.1-8b-instruct",
         "stop": []
-      }'
+      }' > /dev/null
 
       curl -X 'POST' \
         'http://embedqa.nim.svc.cluster.local:8000/v1/embeddings' \
@@ -41,7 +41,7 @@
         "dimensions": null,
         "user": "user-identifier",
         "truncate": "NONE"
-      }'
+      }' > /dev/null
 
           sleep 5
       done
