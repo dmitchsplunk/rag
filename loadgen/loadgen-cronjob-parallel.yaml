@@ -23,5 +23,5 @@ spec:
                 name: loadgen-configmap
                 defaultMode: 0744
           restartPolicy: Never
-      parallelism: 3
+      parallelism: 5
   concurrencyPolicy: Allow
