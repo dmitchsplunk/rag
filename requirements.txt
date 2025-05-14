@@ -13,5 +13,5 @@ gunicorn==23.0.0
 uvicorn[standard]==0.32.0
 pydantic==2.9.2
 PyYAML==6.0.2
-splunk-opentelemetry==1.21.0
-openlit==1.33.10
+splunk-opentelemetry==2.3.0
+opentelemetry-instrumentation-langchain==0.40.5

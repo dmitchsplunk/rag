@@ -51,8 +51,8 @@ COPY ./ /workspace
 
 WORKDIR /workspace/
 
-RUN splunk-py-trace-bootstrap
+RUN opentelemetry-bootstrap -a install
 
-ENTRYPOINT ["splunk-py-trace", "uvicorn", "src.server:app"]
+ENTRYPOINT ["opentelemetry-instrument", "uvicorn", "src.server:app"]
 #ENTRYPOINT ["uvicorn", "src.server:app"]
 # ENTRYPOINT ["/bin/bash"]
