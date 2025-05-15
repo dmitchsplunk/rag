@@ -7,7 +7,7 @@
     loadgen.sh: |
       #!/bin/sh 
 
-      for i in $(seq 20); do
+      for i in $(seq 10); do
       curl -X 'POST' \
         'http://rag-server.rag.svc.cluster.local:8081/generate' \
         -H 'accept: application/json' \

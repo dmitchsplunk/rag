@@ -5,9 +5,13 @@ metadata:
   namespace: rag
 spec:
   schedule: "*/5 * * * *"
+  successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:
+        metadata:
+          annotations:
+            splunk.com/exclude: "true"
         spec:
           containers:
             - name: loadgen

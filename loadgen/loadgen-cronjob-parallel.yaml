@@ -5,9 +5,13 @@ metadata:
   namespace: rag
 spec:
   schedule: "*/15 * * * *"
+  successfulJobsHistoryLimit: 0
   jobTemplate:
     spec:
       template:
+        metadata:
+          annotations:
+            splunk.com/exclude: "true"
         spec:
           containers:
             - name: loadgen-parallel
@@ -23,5 +27,5 @@ spec:
                 name: loadgen-configmap
                 defaultMode: 0744
           restartPolicy: Never
-      parallelism: 5
+      parallelism: 50
   concurrencyPolicy: Allow
