@@ -44,14 +44,12 @@ from pydantic import validator
 from pymilvus.exceptions import MilvusException
 from pymilvus.exceptions import MilvusUnavailableException
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
-
-from opentelemetry.instrumentation.langchain import LangchainInstrumentor
+from opentelemetry.instrumentation.milvus import MilvusInstrumentor
 
 logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO').upper())
 logger = logging.getLogger(__name__)
 
-# Initialize OpenLLMetry instrumentation
-LangchainInstrumentor().instrument()
+MilvusInstrumentor().instrument()
 
 tags_metadata = [
     {

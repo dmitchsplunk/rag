@@ -13,6 +13,8 @@ RUN apt update && \
     apt update && apt install -y python3.10 && \
     apt-get clean
 
+RUN apt install -y git-all
+
 # Install pip for python3.10
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
 

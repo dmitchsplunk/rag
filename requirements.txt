@@ -14,4 +14,5 @@ uvicorn[standard]==0.32.0
 pydantic==2.9.2
 PyYAML==6.0.2
 splunk-opentelemetry==2.3.0
-opentelemetry-instrumentation-langchain==0.40.5
+opentelemetry-instrumentation-milvus==0.40.6
+git+https://github.com/zhirafovod/opentelemetry-python-contrib.git@instrumentation-genai-langchain#subdirectory=instrumentation-genai/opentelemetry-instrumentation-langchain

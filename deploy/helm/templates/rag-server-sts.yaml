@@ -106,6 +106,8 @@ spec:
             value: {{ .Values.ragServer.env.OTEL_EXPORTER_OTLP_ENDPOINT | quote }}
           - name: OTEL_EXPORTER_OTLP_PROTOCOL
             value: {{ .Values.ragServer.env.OTEL_EXPORTER_OTLP_PROTOCOL | quote }}
+          - name: OTEL_INSTRUMENTATION_LANGCHAIN_CAPTURE_MESSAGE_CONTENT
+            value: {{ .Values.ragServer.env.OTEL_INSTRUMENTATION_LANGCHAIN_CAPTURE_MESSAGE_CONTENT | quote }}
         ports:
         - name: http
           containerPort: {{ .Values.ragServer.service.targetPort }}
