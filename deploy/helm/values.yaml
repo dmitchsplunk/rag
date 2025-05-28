@@ -8,7 +8,7 @@ ragServer:
     tag: "v1.0.0-with-otel-langchain"
     #    repository: nvcr.io/nvidia/blueprint/rag-server
     # tag: "1.0.0"
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
   name: rag-server
   replicas: 1
   nodeSelector: {}
