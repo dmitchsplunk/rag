@@ -53,6 +53,8 @@ COPY ./ /workspace
 
 WORKDIR /workspace/
 
+RUN opentelemetry-bootstrap -a install
+
 ENTRYPOINT ["opentelemetry-instrument", "uvicorn", "src.server:app"]
 #ENTRYPOINT ["uvicorn", "src.server:app"]
 # ENTRYPOINT ["/bin/bash"]
