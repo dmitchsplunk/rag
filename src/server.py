@@ -45,11 +45,13 @@ from pymilvus.exceptions import MilvusException
 from pymilvus.exceptions import MilvusUnavailableException
 from starlette.status import HTTP_422_UNPROCESSABLE_ENTITY
 from opentelemetry.instrumentation.milvus import MilvusInstrumentor
+from opentelemetry.instrumentation.openai_v2 import OpenAIInstrumentor
 
 logging.basicConfig(level=os.environ.get('LOGLEVEL', 'INFO').upper())
 logger = logging.getLogger(__name__)
 
 MilvusInstrumentor().instrument()
+OpenAIInstrumentor().instrument()
 
 tags_metadata = [
     {
