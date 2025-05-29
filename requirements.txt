@@ -16,6 +16,7 @@ pydantic==2.9.2
 PyYAML==6.0.2
 splunk-opentelemetry==2.3.0
 opentelemetry-instrumentation-fastapi==0.53b1
+opentelemetry-instrumentation-logging==0.53b1
 opentelemetry-instrumentation-milvus==0.40.6
 opentelemetry-instrumentation-openai-v2==2.1b0
 git+https://github.com/zhirafovod/opentelemetry-python-contrib.git@instrumentation-genai-langchain#subdirectory=instrumentation-genai/opentelemetry-instrumentation-langchain
