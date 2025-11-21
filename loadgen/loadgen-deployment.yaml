@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadgen-deployment
+  namespace: rag
+spec:
+  replicas: 50
+  selector:
+    matchLabels:
+      app: loadgen
+  template:
+    metadata:
+      labels:
+        app: loadgen
+      annotations:
+        splunk.com/exclude: "true"
+    spec:
+      containers:
+        - name: loadgen-parallel
+          image: radial/busyboxplus:curl
+          imagePullPolicy: IfNotPresent
+          command: [ "/script/loadgen.sh" ]
+          volumeMounts:
+            - name: script
+              mountPath: "/script"
+      volumes:
+        - name: script
+          configMap:
+            name: loadgen-configmap
+            defaultMode: 0744
+      restartPolicy: Always
