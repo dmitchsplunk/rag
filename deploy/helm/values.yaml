@@ -5,8 +5,8 @@ ragServer:
   concurrentWorkers: 32
   image:
     repository: ghcr.io/dmitchsplunk/rag-server
-    tag: "v1.0.2"
-    #tag: "v1.0.0-with-otel-langchain"
+    tag: "v1.0.3"
+#    tag: "v1.0.2"
     pullPolicy: Always
   name: rag-server
   replicas: 1

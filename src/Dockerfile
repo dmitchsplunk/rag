@@ -56,6 +56,6 @@ WORKDIR /workspace/
 RUN opentelemetry-bootstrap -a install
 
 # uninstall opentelemetry-instrumentation-openai-v2 as it causes issues with our application
-RUN venv/bin/pip uninstall -y opentelemetry-instrumentation-openai-v2 opentelemetry.instrumentation.httpx
+RUN pip3 uninstall -y opentelemetry-instrumentation-openai-v2 opentelemetry.instrumentation.httpx
 
 ENTRYPOINT ["opentelemetry-instrument", "uvicorn", "src.server:app"]
