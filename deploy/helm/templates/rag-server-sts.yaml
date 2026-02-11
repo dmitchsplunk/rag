@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: {{ .Values.ragServer.name }}
+      annotations:
+        splunk.com/include: "true"
     spec:
       {{- if .Values.imagePullSecret.name }}
       imagePullSecrets:
